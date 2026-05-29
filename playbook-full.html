@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Automation Playbook — 20 Workflows</title>
+<meta name="robots" content="noindex">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f8f7f4;color:#0a0a0a;padding:40px 24px;line-height:1.7}
+.wrap{max-width:720px;margin:0 auto;background:white;padding:48px;border-radius:12px;box-shadow:0 2px 16px rgba(0,0,0,.06)}
+h1{font-size:clamp(22px,4vw,32px);font-weight:900;letter-spacing:-1px;margin-bottom:8px;line-height:1.2}
+h2{font-size:22px;font-weight:800;margin:40px 0 16px;padding-top:32px;border-top:2px solid #e5e7eb;color:#111}
+h3{font-size:17px;font-weight:700;margin:28px 0 12px;color:#1e3a8a}
+p{margin-bottom:12px;color:#374151}
+ul,ol{margin:12px 0 16px 20px;color:#374151}
+li{margin-bottom:6px}
+hr{border:none;border-top:1px solid #e5e7eb;margin:24px 0}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
+th{background:#f1f5f9;padding:8px 12px;text-align:left;font-weight:700;border:1px solid #e2e8f0}
+td{padding:8px 12px;border:1px solid #e2e8f0}
+strong{font-weight:700;color:#111}
+a{color:#2563eb}
+.top-bar{background:#0a0a0a;color:white;padding:12px 24px;margin:-48px -48px 32px;border-radius:12px 12px 0 0;display:flex;justify-content:space-between;align-items:center;font-size:14px}
+.top-bar span{font-weight:700}
+.cta-box{background:#f0f4ff;border:2px solid #bfdbfe;border-radius:8px;padding:24px;margin:32px 0;text-align:center}
+.cta-box p{color:#1e40af;font-weight:600;margin-bottom:12px}
+.btn{display:inline-block;background:#2563eb;color:white;font-weight:700;padding:12px 24px;border-radius:6px;text-decoration:none;font-size:15px}
+@media(max-width:600px){.wrap{padding:24px 20px}.top-bar{margin:-24px -20px 24px;padding:10px 20px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="top-bar"><span>AI Automation Playbook</span><span>Your purchase · Thank you!</span></div>
+<h1>AI Automation Playbook — 20 Workflows for Digital Marketing Agencies</h1>
+
+<h2>How to Use This Playbook</h2>
+
+<p>Each workflow entry includes: <strong>what it automates</strong>, <strong>tools needed</strong> (free-tier available), <strong>time saved per week</strong>, and <strong>3-step setup summary</strong>. Start with any 1–2 that match your current biggest time sink.</p>
+
+<hr>
+
+<h2>Part 1: Client Reporting (Workflows 1–4)</h2>
+
+<h3>Workflow 1 — Automated Weekly Report Assembly</h3>
+
+<p><strong>What it does:</strong> Pulls data from Google Analytics, Meta Ads, and Google Ads; drops it into a formatted Slides/Docs template; emails to client automatically every Monday at 7am.</p>
+
+<p><strong>Tools:</strong> Make.com (free tier), Google Sheets, Google Data Studio (Looker Studio — free), Gmail</p>
+<p><strong>Time saved:</strong> 3–5 hrs/week per client</p>
+<p><strong>Setup:</strong></p>
+<ol>
+<li>Create a Looker Studio template with live GA4 + Ads data connectors</li>
+<li>Build a Make scenario: Schedule trigger → Sheets API (pull KPIs) → Gmail (send PDF export)</li>
+<li>Parameterize by client ID so one scenario serves all accounts</li>
+</ul>
+
+<hr>
+
+<h3>Workflow 2 — Anomaly Alert: Spend Spike Detection</h3>
+
+<p><strong>What it does:</strong> Monitors daily ad spend across all accounts; sends a Slack/email alert within 60 minutes if any account goes 20%+ over daily pacing.</p>
+
+<p><strong>Tools:</strong> Google Ads Scripts (free), Slack webhook (free), or Gmail</p>
+<p><strong>Time saved:</strong> Prevents costly budget overruns; replaces 2× daily manual checks</p>
+<p><strong>Setup:</strong></p>
+<ol>
+<li>Open Google Ads > Tools > Scripts; paste the daily-spend-check script template</li>
+<li>Set threshold: `if (actualSpend > dailyBudget * 1.20)`</li>
+<li>Add Slack webhook URL or Gmail send to your phone</li>
+</ul>
+
+<hr>
+
+<h3>Workflow 3 — Monthly Narrative Report Generator</h3>
+
+<p><strong>What it does:</strong> Takes raw KPI data from Sheets, feeds it to Claude/GPT with a prompt template, outputs a 2-paragraph plain-English narrative ("Last month, your paid search drove a 14% lift in conversions vs. prior month…").</p>
+
+<p><strong>Tools:</strong> Make.com or Zapier, Claude API (pay-per-use ~$0.01/report), Google Docs</p>
+<p><strong>Time saved:</strong> 45 min/client/month</p>
+<p><strong>Setup:</strong></p>
+<ol>
+<li>Sheets column layout: metric name | previous | current | delta</li>
+<li>Make module: Read Sheets row → HTTP POST to Claude API with prompt: "Write a 2-paragraph executive summary comparing these metrics: {data}. Tone: professional, no jargon."</li>
+<li>Paste output into report template Doc</li>
+</ul>
+
+<hr>
+
+<h3>Workflow 4 — Client Dashboard Auto-Refresh via Looker Studio</h3>
+
+<p><strong>What it does:</strong> Live dashboard that clients can bookmark — always shows current data with zero manual updates.</p>
+
+<p><strong>Tools:</strong> Looker Studio (free), GA4 connector (free), Google Ads connector (free)</p>
+<p><strong>Time saved:</strong> Eliminates ad-hoc "what are my numbers?" requests</p>
+<p><strong>Setup:</strong></p>
+<ol>
+<li>Build one Looker Studio template with all standard KPI cards</li>
+<li>Use "Copy Report" feature for each client; swap data source to their GA4/Ads accounts</li>
+<li>Share view-only link in client welcome email</li>
+</ul>
+
+<hr>
+
+<h2>Part 2: Prospect & Lead Generation (Workflows 5–9)</h2>
+
+<h3>Workflow 5 — LinkedIn Signal Monitor</h3>
+
+<p><strong>What it does:</strong> Monitors LinkedIn for posts matching keywords ("looking for SEO agency", "need PPC help", "agency recommendations") and sends a digest to your inbox every morning.</p>
+
+<p><strong>Tools:</strong> PhantomBuster (free trial, then $~30/mo) OR Bardeen (free tier), Gmail</p>
+<p><strong>Time saved:</strong> Replaces 1 hr/day of manual LinkedIn scrolling</p>
+<p><strong>Setup:</strong></p>
+<ol>
+<li>PhantomBuster > LinkedIn Post Search phantom → keyword: "need agency" OR "looking for SEO"</li>
+<li>Set to run daily at 7am; export to Google Sheets</li>
+<li>Zapier: new Sheets row → send Gmail digest</li>
+</ul>
+
+<hr>
+
+<h3>Workflow 6 — Job Board Intent Signal (Hiring = Pain Signal)</h3>
+
+<p><strong>What it does:</strong> Scrapes Indeed/LinkedIn Jobs for companies hiring "marketing manager" or "paid media manager" — these companies are often ready to outsource instead.</p>
+
+<p><strong>Tools:</strong> Apify (free tier), Google Sheets, Slack or email</p>
+<p><strong>Time saved:</strong> Surfaces 10–15 warm leads/week without cold prospecting</p>
+<p><strong>Setup:</strong></p>
+<ol>
+<li>Apify > LinkedIn Jobs Scraper actor → query: "paid media manager" + location filter</li>
+<li>Run weekly; export to Sheets</li>
+<li>Cross-reference with Apollo.io free tier to find owner email</li>
+</ul>
+
+<hr>
+
+<h3>Workflow 7 — Competitor Review Mining</h3>
+
+<p><strong>What it does:</strong> Monitors Google Maps / Clutch.co reviews of your top 3 competitors; alerts you when a negative review appears (unhappy client = potential switch opportunity).</p>
+
+<p><strong>Tools:</strong> Make.com + SerpAPI (free 100 queries/mo) or manual weekly Apify run</p>
+<p><strong>Time saved:</strong> Surfaces warm leads from competitor pain</p>
+<p><strong>Setup:</strong></p>
+<ol>
+<li>Make scenario: weekly schedule → SerpAPI "Google Maps reviews" for competitor names</li>
+<li>Filter: sentiment < 3 stars → extract company name</li>
+<li>Send to prospecting queue in Sheets</li>
+</ul>
+
+<hr>
+
+<h3>Workflow 8 — Automated Follow-Up Sequence for Inbound Leads</h3>
+
+<p><strong>What it does:</strong> When someone fills your contact form or books a call, they get a 3-email nurture sequence automatically (Day 0 confirmation, Day 2 case study, Day 5 social proof).</p>
+
+<p><strong>Tools:</strong> MailerLite (free up to 1,000 contacts), Cal.com (free), Zapier</p>
+<p><strong>Time saved:</strong> Replaces manual follow-up on leads that don't book immediately</p>
+<p><strong>Setup:</strong></p>
+<ol>
+<li>Cal.com → Zapier → MailerLite: add to "Inbound Lead" automation sequence on new booking</li>
+<li>Build 3-email sequence in MailerLite: welcome + deliverable, case study, soft CTA</li>
+<li>Tag completed bookings to stop sequence</li>
+</ul>
+
+<hr>
+
+<h3>Workflow 9 — Domain Expiry Prospecting</h3>
+
+<p><strong>What it does:</strong> Identifies small business websites whose domains expire in the next 30–60 days — these owners often need a new web partner and are actively paying attention.</p>
+
+<p><strong>Tools:</strong> DomainTools free API (limited) or bulk WHOIS lookup via CSVs from NameStat</p>
+<p><strong>Time saved:</strong> Surfaces niche warm leads with specific, time-bounded pain</p>
+<p><strong>Setup:</strong></p>
+<ol>
+<li>Download NameStat "expiring domains" by category (e.g., local services + your city)</li>
+<li>Filter by site age > 3 years (established business, not a squatter)</li>
+<li>Find owner email via Apollo.io / Hunter.io; add to outreach sequence</li>
+</ul>
+
+<hr>
+
+<h2>Part 3: Content Operations (Workflows 10–13)</h2>
+
+<h3>Workflow 10 — Blog Post Brief Generator</h3>
+
+<p><strong>What it does:</strong> Takes a target keyword, runs SERP analysis, extracts common headings and questions from top-10 results, outputs a structured brief for a writer (or GPT).</p>
+
+<p><strong>Tools:</strong> SerpAPI (free 100/mo), Claude API, Google Docs or Notion</p>
+<p><strong>Time saved:</strong> 90 min per brief → 5 min</p>
+<p><strong>Setup:</strong></p>
+<ol>
+<li>Make: Input form (keyword) → SerpAPI → extract h2/h3 from top 10 results</li>
+<li>Feed to Claude: "Create an SEO blog post brief for '{keyword}' using these headings as reference: {data}"</li>
+<li>Auto-create a Google Doc with the brief</li>
+</ul>
+
+<hr>
+
+<h3>Workflow 11 — Social Caption Batch Producer</h3>
+
+<p><strong>What it does:</strong> Takes a list of 10 topics or URLs, produces 10 LinkedIn/Instagram captions in your brand voice, outputs to a Sheets "content calendar" with suggested post dates.</p>
+
+<p><strong>Tools:</strong> Claude API (cost: ~$0.05 for 10 captions), Google Sheets, Zapier or Make</p>
+<p><strong>Time saved:</strong> 2 hr content session → 10 min review session</p>
+<p><strong>Setup:</strong></p>
+<ol>
+<li>Add topics to Column A of Sheets</li>
+<li>Make: for each row → Claude API with prompt: "Write a {platform} caption for {topic} in a professional-but-approachable tone. Max 3 sentences. Include 1 question to drive comments."</li>
+<li>Paste output to Column B; add scheduled dates to Column C</li>
+</ul>
+
+<hr>
+
+<h3>Workflow 12 — YouTube → Blog Post Repurpose Pipeline</h3>
+
+<p><strong>What it does:</strong> Takes a YouTube video URL, fetches the transcript, passes to Claude with a repurposing prompt, outputs a 600-word SEO blog post draft.</p>
+
+<p><strong>Tools:</strong> YouTube transcript API (free), Claude API (~$0.03/post), Google Docs</p>
+<p><strong>Time saved:</strong> 3 hrs manual transcription/editing → 15 min review</p>
+<p><strong>Setup:</strong></p>
+<ol>
+<li>Make: URL input → YouTube Data API (get transcript) → Claude API: "Convert this transcript into a 600-word blog post with H2 subheadings, intro, and call to action: {transcript}"</li>
+<li>Create Google Doc with output</li>
+<li>Human review: 10–15 min to polish</li>
+</ul>
+
+<hr>
+
+<h3>Workflow 13 — Review Request Automation</h3>
+
+<p><strong>What it does:</strong> After a client's campaign milestone (e.g., 90 days), automatically sends a Google review request email with a direct link.</p>
+
+<p><strong>Tools:</strong> MailerLite or Gmail + Zapier, CRM tag or Sheets date trigger</p>
+<p><strong>Time saved:</strong> Replaces manual "please leave a review" asks; increases review volume 3–5×</p>
+<p><strong>Setup:</strong></p>
+<ol>
+<li>Track client start dates in Sheets</li>
+<li>Zapier: row value = "90 days since start" → Gmail send with review link template</li>
+<li>Template: "Hi {name}, we hit our 90-day mark! Would you mind sharing a quick Google review? [Direct link]. Takes 2 minutes and means the world."</li>
+</ul>
+
+<hr>
+
+<h2>Part 4: Internal Ops & Admin (Workflows 14–17)</h2>
+
+<h3>Workflow 14 — Invoice + Proposal Auto-Generation</h3>
+
+<p><strong>What it does:</strong> Fill a short form (client name, service, amount); automatically generates a formatted PDF invoice and/or proposal and emails it to the client.</p>
+
+<p><strong>Tools:</strong> PandaDoc (free tier for 5 docs/mo) or Docupilot + Make</p>
+<p><strong>Time saved:</strong> 45 min per proposal → 5 min</p>
+<p><strong>Setup:</strong></p>
+<ol>
+<li>Create PandaDoc template with merge fields: {client_name}, {service}, {amount}, {date}</li>
+<li>Make: Google Form submit → PandaDoc API (fill template) → send to client email</li>
+<li>Auto-tag in CRM when opened</li>
+</ul>
+
+<hr>
+
+<h3>Workflow 15 — Time Tracking → Billing Reconciliation</h3>
+
+<p><strong>What it does:</strong> Pulls time entries from Toggl/Harvest weekly, compares to retainer hours per client, flags overages and underages automatically.</p>
+
+<p><strong>Tools:</strong> Toggl API (free), Google Sheets, Make or Zapier</p>
+<p><strong>Time saved:</strong> 2 hrs/month → 15 min review</p>
+<p><strong>Setup:</strong></p>
+<ol>
+<li>Make: weekly schedule → Toggl API (fetch time entries) → write to Sheets</li>
+<li>Formula: `=IF(actual<em>hours > retainer</em>hours, "OVERAGE", "OK")`</li>
+<li>Email yourself a weekly digest with flagged accounts</li>
+</ul>
+
+<hr>
+
+<h3>Workflow 16 — Meeting Notes → Action Items</h3>
+
+<p><strong>What it does:</strong> Pastes raw Zoom/Teams transcript into a form; AI extracts action items by person, due date, and priority; creates tasks in ClickUp/Notion.</p>
+
+<p><strong>Tools:</strong> Claude API, ClickUp or Notion API (both free tiers), Make</p>
+<p><strong>Time saved:</strong> 30 min post-meeting processing → 5 min</p>
+<p><strong>Setup:</strong></p>
+<ol>
+<li>Make: webhook (or manual paste form) → Claude: "Extract all action items from this meeting transcript as JSON: [{owner, task, due_date, priority}]"</li>
+<li>Parse JSON → create tasks in ClickUp via API</li>
+<li>Send each attendee a personal "your action items" email</li>
+</ul>
+
+<hr>
+
+<h3>Workflow 17 — Onboarding Checklist Automation</h3>
+
+<p><strong>What it does:</strong> New client signed? Automatically triggers a 12-step onboarding checklist — welcome email, access requests, kickoff invite, intro call agenda — all pre-scheduled.</p>
+
+<p><strong>Tools:</strong> MailerLite (email sequence), Cal.com (kickoff scheduling), Notion (checklist template), Zapier</p>
+<p><strong>Time saved:</strong> 3 hrs of manual onboarding coordination → 20 min oversight</p>
+<p><strong>Setup:</strong></p>
+<ol>
+<li>Stripe webhook on new payment → Zapier: add to MailerLite "Onboarding" sequence</li>
+<li>Day 0: welcome email + Google Sheets access request</li>
+<li>Day 1: Cal.com kickoff invite auto-send</li>
+<li>Day 3: kickoff agenda auto-send with Loom walkthrough link</li>
+</ul>
+
+<hr>
+
+<h2>Part 5: Growth Automations (Workflows 18–20)</h2>
+
+<h3>Workflow 18 — Referral Program Trigger</h3>
+
+<p><strong>What it does:</strong> When a client hits a milestone (6 months, or their referral brings a new client), auto-sends a referral program offer with a unique tracking link.</p>
+
+<p><strong>Tools:</strong> MailerLite, Rewardful or manual Sheets tracking, Zapier</p>
+<p><strong>Time saved:</strong> Replaces manual "hey, do you know anyone?" asks</p>
+<p><strong>Setup:</strong></p>
+<ol>
+<li>Sheets trigger: client<em>start</em>date = 180 days ago → Zapier → MailerLite send "referral offer" template</li>
+<li>Include a simple unique code (client name + year) for tracking</li>
+<li>Log referrals in Sheets; award credit on next invoice</li>
+</ul>
+
+<hr>
+
+<h3>Workflow 19 — Competitor Gap Alert (New Keyword Opportunities)</h3>
+
+<p><strong>What it does:</strong> Runs weekly comparison of your top client's keyword rankings vs. their top competitor; emails you a list of keywords the competitor ranks for that your client doesn't.</p>
+
+<p><strong>Tools:</strong> SEMrush/Ahrefs API (both have free tiers) or DataForSEO ($0.001/query), Sheets, email</p>
+<p><strong>Time saved:</strong> Surfaces upsell opportunities (new content/pages to build) automatically</p>
+<p><strong>Setup:</strong></p>
+<ol>
+<li>Make: weekly schedule → SEMrush API (competitor keywords) → Sheets</li>
+<li>VLOOKUP against client keyword list; extract misses</li>
+<li>Email: "5 new keyword opportunities for {client} this week"</li>
+</ul>
+
+<hr>
+
+<h3>Workflow 20 — Automated Case Study Pipeline</h3>
+
+<p><strong>What it does:</strong> When a campaign hits a milestone result (e.g., ROAS > 4×), automatically triggers a case study interview request and pre-populates a case study draft from campaign data.</p>
+
+<p><strong>Tools:</strong> Cal.com (for interview booking), Claude API (for draft), Google Docs, Zapier</p>
+<p><strong>Time saved:</strong> Case studies go from "never happen" to systematic</p>
+<p><strong>Setup:</strong></p>
+<ol>
+<li>Sheets: campaign result column → if ROAS > 4 → Zapier trigger</li>
+<li>Send interview request with Cal.com link: "Your campaign hit 4× ROAS — we'd love to turn this into a case study. 20-min call?"</li>
+<li>Post-call: paste notes into Claude: "Write a 300-word case study from these notes: {notes}. Format: challenge, approach, results."</li>
+</ul>
+
+<hr>
+
+<h2>Bonus: Recommended Tool Stack (All Free to Start)</h2>
+
+<table>
+<tr><th>Category</th><th>Tool</th><th>Free Tier</th></tr>
+<tr><td>Automation</td><td>Make.com</td><td>1,000 ops/mo</td></tr>
+<tr><td>Automation (alt)</td><td>Zapier</td><td>100 tasks/mo</td></tr>
+<tr><td>AI API</td><td>Claude API</td><td>Pay-per-use</td></tr>
+<tr><td>Email marketing</td><td>MailerLite</td><td>1,000 contacts</td></tr>
+<tr><td>Scheduling</td><td>Cal.com</td><td>Unlimited</td></tr>
+<tr><td>CRM</td><td>HubSpot</td><td>Free CRM</td></tr>
+<tr><td>Reporting</td><td>Looker Studio</td><td>Free</td></tr>
+<tr><td>Prospecting</td><td>Apollo.io</td><td>50 emails/mo free</td></tr>
+<tr><td>Docs/templates</td><td>Notion</td><td>Free personal</td></tr>
+</table>
+<hr>
+
+<p><em>Questions? Reply to this email — I read everything.</em></p>
+
+<div class="cta-box">
+<p>Want someone to map YOUR specific setup in 60 minutes?</p>
+<a href="https://buy.stripe.com/5kQ9AV2nTg3H9NyaCO6Vq02" class="btn">Book an AI Systems Snapshot — $500 →</a>
+</div>
+</div>
+</body>
+</html>
