@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Automation Playbook for Marketing Agencies — 20 Workflows, $19</title>
+<meta name="description" content="20 AI workflow automations built for digital marketing agencies. Client reporting, lead gen, content ops — step-by-step setups with free tools. $19.">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --off-white: #f8f7f4;
+    --accent: #2563eb;
+    --accent-dark: #1d4ed8;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --green: #16a34a;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--off-white);
+    color: var(--black);
+    line-height: 1.6;
+  }
+
+  .container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Header */
+  header {
+    background: var(--black);
+    color: white;
+    padding: 12px 0;
+  }
+  header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .brand { font-weight: 700; font-size: 15px; letter-spacing: -0.3px; }
+  .price-badge {
+    background: var(--accent);
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 72px 0 56px;
+    text-align: left;
+  }
+  .eyebrow {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 16px;
+  }
+  h1 {
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+  }
+  h1 em { color: var(--accent); font-style: normal; }
+
+  .subtitle {
+    font-size: 18px;
+    color: #374151;
+    margin-bottom: 36px;
+    max-width: 560px;
+  }
+
+  .cta-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    font-size: 17px;
+    font-weight: 700;
+    padding: 16px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.15s;
+    letter-spacing: -0.2px;
+  }
+  .btn-primary:hover { background: var(--accent-dark); }
+
+  .trust-line {
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .trust-line span { color: var(--green); font-weight: 600; }
+
+  /* Pain section */
+  .section { padding: 56px 0; border-top: 1px solid var(--border); }
+  h2 {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 24px;
+    line-height: 1.25;
+  }
+
+  .pain-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .pain-list li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 16px;
+  }
+  .pain-list li::before {
+    content: "→";
+    color: var(--muted);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* What's inside */
+  .workflows-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .workflow-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+  }
+  .workflow-card .number {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+  }
+  .workflow-card p {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--black);
+    line-height: 1.4;
+  }
+  .workflow-card .save {
+    font-size: 12px;
+    color: var(--green);
+    margin-top: 6px;
+    font-weight: 500;
+  }
+
+  /* Who it's for */
+  .for-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .for-list li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 16px;
+  }
+  .check { color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+  /* Pricing */
+  .price-box {
+    background: white;
+    border: 2px solid var(--accent);
+    border-radius: 12px;
+    padding: 32px;
+    text-align: center;
+    margin-top: 24px;
+  }
+  .price-big {
+    font-size: 52px;
+    font-weight: 900;
+    color: var(--black);
+    letter-spacing: -2px;
+    line-height: 1;
+  }
+  .price-note { font-size: 14px; color: var(--muted); margin-top: 6px; margin-bottom: 24px; }
+
+  .btn-buy {
+    display: block;
+    background: var(--accent);
+    color: white;
+    font-size: 18px;
+    font-weight: 800;
+    padding: 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-bottom: 14px;
+    transition: background 0.15s;
+  }
+  .btn-buy:hover { background: var(--accent-dark); }
+
+  .guarantee {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 12px;
+  }
+  .guarantee strong { color: var(--black); }
+
+  /* Upsell */
+  .upsell-box {
+    background: #f0f4ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 8px;
+    padding: 24px;
+    margin-top: 24px;
+  }
+  .upsell-box h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+  .upsell-box p { font-size: 15px; color: #374151; margin-bottom: 16px; }
+  .btn-secondary {
+    display: inline-block;
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 15px;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .btn-secondary:hover { background: var(--accent); color: white; }
+
+  /* Footer */
+  footer {
+    padding: 40px 0;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  @media (max-width: 560px) {
+    .workflows-grid { grid-template-columns: 1fr; }
+    .hero { padding: 48px 0 40px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <span class="brand">AI Workflow Lab</span>
+    <span class="price-badge">$19</span>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">For Digital Marketing Agencies</p>
+      <h1>20 AI Workflows That <em>Actually Save Hours</em> — Step-by-Step</h1>
+      <p class="subtitle">Client reporting, lead gen, content ops, and internal admin — each workflow includes the exact tools, setup steps, and estimated time saved per week.</p>
+      <div class="cta-group">
+        <a href="https://buy.stripe.com/cNi9AV9QlaJnf7S7qC6Vq03" class="btn-primary">Get the Playbook — $19</a>
+        <p class="trust-line"><span>✓ Instant delivery</span> &nbsp;·&nbsp; PDF/Doc format &nbsp;·&nbsp; No subscription</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Most agencies are still doing this by hand.</h2>
+      <ul class="pain-list">
+        <li>Manually assembling weekly reports from GA4, Meta Ads, and Google Ads into a Slides deck — every. single. week.</li>
+        <li>Checking ad budgets manually twice a day to catch overspend before clients notice</li>
+        <li>Writing the "what it means" narrative in client reports from scratch each month</li>
+        <li>Following up on inbound leads by hand — or worse, not following up at all</li>
+        <li>Spending 45 minutes on a proposal that should take 5</li>
+      </ul>
+      <p style="margin-top:24px;font-size:16px;color:#374151;">None of this is hard to automate. It's just unfamiliar. This playbook closes that gap.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>What's inside: 20 workflows across 5 categories</h2>
+      <div class="workflows-grid">
+        <div class="workflow-card">
+          <div class="number">Client Reporting</div>
+          <p>Automated weekly report assembly + anomaly alerts</p>
+          <div class="save">Saves 3–5 hrs/client/week</div>
+        </div>
+        <div class="workflow-card">
+          <div class="number">Lead Generation</div>
+          <p>LinkedIn signal monitoring + intent-based prospecting</p>
+          <div class="save">Surfaces 10–15 warm leads/week</div>
+        </div>
+        <div class="workflow-card">
+          <div class="number">Content Ops</div>
+          <p>Brief generator, caption batching, YouTube → blog repurpose</p>
+          <div class="save">90-min session → 10-min review</div>
+        </div>
+        <div class="workflow-card">
+          <div class="number">Internal Admin</div>
+          <p>Invoice generation, meeting notes → action items, onboarding</p>
+          <div class="save">Saves 3+ hrs/week on admin</div>
+        </div>
+        <div class="workflow-card">
+          <div class="number">Growth Automations</div>
+          <p>Referral triggers, competitor gap alerts, case study pipeline</p>
+          <div class="save">Revenue-generating automations</div>
+        </div>
+        <div class="workflow-card">
+          <div class="number">Tool Stack Guide</div>
+          <p>Best free tools for each category + setup order</p>
+          <div class="save">$0 to start for most workflows</div>
+        </div>
+      </div>
+
+      <p style="margin-top:24px;font-size:15px;color:#374151;">Each workflow includes: <strong>exact tools</strong> (with free tier options), <strong>3-step setup summary</strong>, and <strong>estimated weekly time saved</strong>.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>This is for you if…</h2>
+      <ul class="for-list">
+        <li><span class="check">✓</span> You run a digital marketing agency with 2–30 employees</li>
+        <li><span class="check">✓</span> You've tried AI tools but nothing has "stuck" into a real workflow yet</li>
+        <li><span class="check">✓</span> You're doing the same manual task every week and it's starting to feel stupid</li>
+        <li><span class="check">✓</span> You want to automate without hiring a developer or paying $500/mo for software</li>
+        <li><span class="check">✓</span> You're considering hiring an ops person — automation might be cheaper</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Get instant access</h2>
+      <div class="price-box">
+        <div class="price-big">$19</div>
+        <p class="price-note">One-time. No subscription. Instant delivery.</p>
+        <a href="https://buy.stripe.com/cNi9AV9QlaJnf7S7qC6Vq03" class="btn-buy">Buy the AI Automation Playbook →</a>
+        <p class="guarantee"><strong>30-day guarantee:</strong> If you implement even 1 workflow and it doesn't save you time, email for a full refund. No questions.</p>
+      </div>
+
+      <div class="upsell-box">
+        <h3>Want someone to map YOUR specific setup?</h3>
+        <p>The <strong>AI Systems Snapshot</strong> is a 60-minute call where I look at your actual workflows and hand you a written priority list of exactly what to automate first — no generic advice.</p>
+        <a href="https://buy.stripe.com/5kQ9AV2nTg3H9NyaCO6Vq02" class="btn-secondary">Book a Snapshot Call — $500 →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <p>AI Workflow Lab &nbsp;·&nbsp; Questions? Reply to your purchase receipt.</p>
+    <p style="margin-top:8px;">Payments processed securely by Stripe.</p>
+  </div>
+</footer>
+
+</body>
+</html>
